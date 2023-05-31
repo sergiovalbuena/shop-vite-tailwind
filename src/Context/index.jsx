@@ -13,6 +13,8 @@ export const ShoppingCartProvider = ({ children }) => {
 
     //Product Detail - Show Product 
     const [productToShow, setProductToShow] = useState({})
+    //Shoopping Cart - Add Products to cart
+    const [cartProducts, setCartProducts] = useState([])
 
     console.log('COUNT:', count)
 
@@ -25,7 +27,9 @@ export const ShoppingCartProvider = ({ children }) => {
             closeProductDetail, 
             isProductDetailOpen, 
             productToShow, //leer la info
-            setProductToShow, //enviar la info 
+            setProductToShow, //enviar la info
+            cartProducts,
+            setCartProducts
         }}>
             {children}
         </ShoppingCartContext.Provider>
