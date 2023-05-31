@@ -6,6 +6,7 @@ import MyOrders from '../MyOrders'
 import MyOrder from '../MyOrder'
 import SignIn from '../SignIn'
 import NotFound from '../NotFound'
+import RickAndMortyCharacters from '../rickandmorty'
 
 import './App.css'
 
@@ -19,6 +20,7 @@ const AppRoutes = () => {
     {path: '/my-orders', element: <MyOrders />},
     {path: '/my-order', element: <MyOrder />},
     {path: '/sign-in', element: <SignIn />},
+    {path: 'rickandmorty', element: <RickAndMortyCharacters />},
     {path: '/*', element: <NotFound />},
 
   ])
