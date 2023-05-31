@@ -9,6 +9,8 @@ import NotFound from '../NotFound'
 
 import './App.css'
 
+import NavBar from '../../Components/NavBar'
+
 //Router Funtion
 const AppRoutes = () => {
   let routes = useRoutes([
@@ -28,6 +30,7 @@ const App = () =>  {
   return (
     <BrowserRouter>
       <AppRoutes />
+      <NavBar/>
     </BrowserRouter>
   )
 }
