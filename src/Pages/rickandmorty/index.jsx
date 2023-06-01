@@ -4,6 +4,10 @@ const RickAndMortyCharacters = () => {
   const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
+    // fetch('https://rickandmortyapi.com/api/character')
+    // .then(response => response.json())
+    // .then(data => setCharacters(data.results))
+
     const fetchCharacters = async () => {
       try {
         const response = await fetch('https://rickandmortyapi.com/api/character');
@@ -13,8 +17,8 @@ const RickAndMortyCharacters = () => {
         console.error('Error fetching characters:', error);
       }
     };
-
     fetchCharacters();
+
   }, []);
 
   return (
