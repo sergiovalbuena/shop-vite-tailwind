@@ -7,6 +7,8 @@ import MyOrders from '../MyOrders'
 import MyOrder from '../MyOrder'
 import SignIn from '../SignIn'
 import NotFound from '../NotFound'
+import { CheckoutSideMenu } from '../../Components/CheckoutSideMenu'
+
 import RickAndMortyCharacters from '../rickandmorty'
 
 import './App.css'
@@ -16,27 +18,29 @@ import NavBar from '../../Components/NavBar'
 //Router Funtion
 const AppRoutes = () => {
   let routes = useRoutes([
-    {path: '/', element: <Home />},
-    {path: '/my-account', element: <MyAccount />},
-    {path: '/my-orders', element: <MyOrders />},
-    {path: '/my-order', element: <MyOrder />},
-    {path: '/sign-in', element: <SignIn />},
-    {path: 'rickandmorty', element: <RickAndMortyCharacters />},
-    {path: '/*', element: <NotFound />},
+    { path: '/', element: <Home /> },
+    { path: '/my-account', element: <MyAccount /> },
+    { path: '/my-orders', element: <MyOrders /> },
+    { path: '/my-order', element: <MyOrder /> },
+    { path: '/sign-in', element: <SignIn /> },
+    { path: 'rickandmorty', element: <RickAndMortyCharacters /> },
+    { path: '/*', element: <NotFound /> },
 
   ])
   return routes
 }
 
 
-const App = () =>  {
+const App = () => {
   return (
     <ShoppingCartProvider>
 
-    <BrowserRouter>
-      <AppRoutes />
-      <NavBar/>
-    </BrowserRouter>
+      <BrowserRouter>
+        <AppRoutes />
+        <NavBar />
+        <CheckoutSideMenu />
+      </BrowserRouter>
+      
     </ShoppingCartProvider>
   )
 }
