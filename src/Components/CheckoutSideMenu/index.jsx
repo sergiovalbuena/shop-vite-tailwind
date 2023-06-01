@@ -10,7 +10,6 @@ import './styles.css';
 
 export const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext)
-  console.log('SHOPPING CART:', context.cartProducts)
   
   const handleDelete = (id) => {
     const filteredProducts = context.cartProducts.filter(product => product.id != id)

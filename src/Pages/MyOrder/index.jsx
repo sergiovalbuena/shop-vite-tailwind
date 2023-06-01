@@ -8,10 +8,15 @@ import {OrderCard} from '../../Components/OrderCard'
 export default function MyOrder() {
   const context = useContext(ShoppingCartContext)
 
+  const currentPath = window.location.pathname
+  const index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
+  console.log(index)
+
+
   return (
     <Layout>
 
-<div className="flex items-center  relative w-80 mb-2">
+<div className="flex items-center relative w-80 mb-2">
          <Link to='/my-orders' className='absolute left-0'>
         <ChevronLeftIcon className='h-6 w-6 text-black cursor-pointer'/>
         </Link>
