@@ -9,8 +9,10 @@ const RickAndMortyCharacters = () => {
     // .then(data => setCharacters(data.results))
 
     const fetchCharacters = async () => {
+      const APIurl  = 'https://rickandmortyapi.com/api/character'
+      
       try {
-        const response = await fetch('https://rickandmortyapi.com/api/character');
+        const response = await fetch(APIurl);
         const data = await response.json();
         setCharacters(data.results);
       } catch (error) {
