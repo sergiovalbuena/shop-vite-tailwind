@@ -26,6 +26,7 @@ export const CheckoutSideMenu = () => {
 
     context.setOrder([...context.order, orderToAdd])//agregar la 
     context.setCartProducts([]) //limpiar el carrito
+    context.setSearchByTitle(null)
   }
 
   return (
