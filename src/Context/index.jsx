@@ -23,7 +23,7 @@ export const ShoppingCartProvider = ({ children }) => {
     const [count, setCount] = useState(0)
     //Shoopping Cart - Add Products to cart
     const [cartProducts, setCartProducts] = useState([])
-    console.log('COUNT:', count)
+    //console.log('COUNT:', count)
 
     //Shopping Cart - Order
     const [order, setOrder] = useState([])
@@ -34,7 +34,7 @@ export const ShoppingCartProvider = ({ children }) => {
 
     //Get Products by title
     const [searchByTitle, setSearchByTitle] = useState(null)
-    console.log('searchByTitle:', searchByTitle)
+   // console.log('searchByTitle:', searchByTitle)
 
     //Get Products by Category
     const [searchByCategory, setSearchByCategory] = useState(null)

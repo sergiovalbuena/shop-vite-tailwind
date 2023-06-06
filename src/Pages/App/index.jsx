@@ -14,6 +14,7 @@ import RickAndMortyCharacters from '../rickandmorty'
 import './App.css'
 
 import NavBar from '../../Components/NavBar'
+import { InventoryPage } from '../Inventory'
 
 //Router Funtion
 const AppRoutes = () => {
@@ -30,6 +31,7 @@ const AppRoutes = () => {
     { path: '/my-orders/:id', element: <MyOrder /> },
     { path: '/my-order', element: <MyOrder /> },
     { path: '/sign-in', element: <SignIn /> },
+    { path: '/inventory', element: <InventoryPage /> },
     { path: 'rickandmorty', element: <RickAndMortyCharacters /> },
     { path: '/*', element: <NotFound /> },
 
