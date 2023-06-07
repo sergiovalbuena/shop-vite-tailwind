@@ -1,6 +1,9 @@
 
 
-export const PageHeader = () => {
+export const PageHeader = ({
+    completedItems,
+    totalItems,
+}) => {
     return (
         <div className="text-center">
             <svg
@@ -19,7 +22,7 @@ export const PageHeader = () => {
             </svg>
             <h2 className="mt-2 text-base font-semibold leading-6 text-gray-900">Add item to the Inventory</h2>
             {/* <p className="mt-1 text-sm text-gray-500">You haven’t added any team members to your project yet.</p> */}
-            <p>Tenemos completado 10 de 20 Tareas</p>
+            <p>Tenemos completado {completedItems} de {totalItems} Tareas</p>
         </div>
     )
 }
