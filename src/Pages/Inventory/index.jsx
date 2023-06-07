@@ -5,9 +5,12 @@ import { Layout } from '../../Components/Layout'
 import { PlusIcon } from '@heroicons/react/20/solid'
 import { PageHeader } from '../../Components/ToDoList/PageHeader'
 import { InventoryForm } from '../../Components/ToDoList/InventoryForm'
+import { InventoryList } from '../../Components/ToDoList/InventoryList'
+import { InventoryItem } from '../../Components/ToDoList/InventoryItem'
 
 const inventory = [
     {
+        id: 1,
         name: 'Carnitas',
         role: 'grms',
         imageUrl:
@@ -15,6 +18,7 @@ const inventory = [
         completed: true
     },
     {
+        id: 2,
         name: 'Birria de res',
         role: 'grms',
         imageUrl:
@@ -22,12 +26,14 @@ const inventory = [
         completed: false
     },
     {
+        id: 3,
         name: 'Churros',
         role: 'Boxes',
         imageUrl:
             'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     },
     {
+        id: 4,
         name: 'Baja Fish',
         role: 'Boxes',
         imageUrl:
@@ -35,6 +41,7 @@ const inventory = [
         completed: true
     },
     {
+        id: 5,
         name: 'Tinga de Pollo',
         role: 'grms',
         imageUrl:
@@ -42,6 +49,7 @@ const inventory = [
         completed: true
     },
     {
+        id: 6,
         name: 'Tortillas Home 12"',
         role: 'Bags/Lbs',
         imageUrl:
@@ -66,7 +74,7 @@ export const InventoryPage = () => {
     //buscador 
     const searchedItems = inventoryItems.filter((item) => {
         //return item.name.toLowerCase().includes(inputValue.toLowerCase())
-        const inventoryItem = item.name.toLowerCase()
+          const inventoryItem = item.name.toLowerCase()
         const searchText = inputValue.toLowerCase()
         return inventoryItem.includes(searchText)
     })
@@ -86,32 +94,20 @@ export const InventoryPage = () => {
                    setInputValue={setInputValue}
                    />
                 </div>
-                <div className="mt-10">
-                    <h3 className="text-sm font-medium text-gray-500">Added items</h3>
-                    <ul role="list" className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                        {searchedItems.map((item, itemIdx) => (
-                            <li key={itemIdx}>
-                                <button
-                                    type="button"
-                                    className={`group flex w-full items-center justify-between space-x-3 rounded-full border border-gray-300 p-2 text-left shadow-sm ${item.completed ? 'hover:bg-gray-50' : 'hover:bg-pink-400'}   focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2`}
-                                >
-                                    <span className="flex min-w-0 flex-1 items-center space-x-3">
-                                        <span className="block flex-shrink-0">
-                                            <img className="h-10 w-10 rounded-full" src={item.imageUrl} alt="" />
-                                        </span>
-                                        <span className="block min-w-0 flex-1">
-                                            <span className={`block truncate text-sm font-medium ${item.completed ? 'text-green-400' : 'text-orange-200'} `} >{item.name}</span>
-                                            <span className="block truncate text-sm font-medium text-gray-500">{item.role}</span>
-                                        </span>
-                                    </span>
-                                    <span className="inline-flex h-10 w-10 flex-shrink-0 items-center justify-center">
-                                        <PlusIcon className="h-5 w-5 text-gray-400 group-hover:text-gray-500" aria-hidden="true" />
-                                    </span>
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                
+                <InventoryList>
+                {searchedItems.map((item) => (
+                    <InventoryItem
+                        key={item.id}
+                        name={item.name}
+                        role={item.role}
+                        imageUrl={item.imageUrl}
+                        completed={item.completed}
+                    />
+                ))}
+
+                </InventoryList>
+
             </div>
         </Layout>
     )
