@@ -2,7 +2,34 @@ import { createContext, useState, useEffect } from "react"
 
 export const ShoppingCartContext = createContext()
 
+export const initializeLocalStorage = () => {
+  const accountInLocalStorage = localStorage.getItem('account')
+  const signOutInLocalStorage = localStorage.getItem('sign-out')
+  let parsedAccount
+  let parsedSignOut
+
+  if (!accountInLocalStorage) {
+    localStorage.setItem('account', JSON.stringify({}))
+    parsedAccount = {}
+  } else {
+    parsedAccount = JSON.parse(accountInLocalStorage)
+  }
+
+  if (!signOutInLocalStorage) {
+    localStorage.setItem('sign-out', JSON.stringify(false))
+    parsedSignOut = false
+  } else {
+    parsedSignOut = JSON.parse(signOutInLocalStorage)
+  }
+}
+
+
 export const ShoppingCartProvider = ({ children }) => {
+    // My account
+    const [account, setAccount] = useState({})
+
+    // Sign out
+    const [signOut, setSignOut] = useState(false)
 
     //Product Detail - Open and Close 
     const [isProductDetailOpen, setIsProductDetailOpen] = useState(false)
@@ -14,30 +41,28 @@ export const ShoppingCartProvider = ({ children }) => {
     const openCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(true)
     const closeCheckoutSideMenu = () => setIsCheckoutSideMenuOpen(false)
 
-
-
     //Product Detail - Show Product 
     const [productToShow, setProductToShow] = useState({})
-
     //Shopping Cart - Count
     const [count, setCount] = useState(0)
     //Shoopping Cart - Add Products to cart
     const [cartProducts, setCartProducts] = useState([])
     //console.log('COUNT:', count)
-
     //Shopping Cart - Order
     const [order, setOrder] = useState([])
-
     //Get Products
     const [items, setItems] = useState(null)
     const [filteredItems, setFilteredItems] = useState(null)
-
     //Get Products by title
     const [searchByTitle, setSearchByTitle] = useState(null)
    // console.log('searchByTitle:', searchByTitle)
-
     //Get Products by Category
     const [searchByCategory, setSearchByCategory] = useState(null)
+
+
+    //Craeting Local Storage
+
+
 
 
     useEffect(() => {
@@ -97,7 +122,11 @@ export const ShoppingCartProvider = ({ children }) => {
             setSearchByTitle,
             filteredItems,
             searchByCategory, 
-            setSearchByCategory
+            setSearchByCategory,
+            account,
+            setAccount,
+            signOut,
+            setSignOut
         }}>
             {children}
         </ShoppingCartContext.Provider>

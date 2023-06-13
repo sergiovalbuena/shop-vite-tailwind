@@ -2,7 +2,7 @@ import {useState} from 'react'
 import { Layout } from '../../Components/Layout'
 
 
-import { PlusIcon } from '@heroicons/react/20/solid'
+
 import { PageHeader } from '../../Components/ToDoList/PageHeader'
 import { InventoryForm } from '../../Components/ToDoList/InventoryForm'
 import { InventoryList } from '../../Components/ToDoList/InventoryList'
@@ -63,7 +63,7 @@ export const InventoryPage = () => {
 
     const [inputValue, setInputValue] = useState('')
     console.log(inputValue)
-
+    
     const [inventoryItems, setInventoryItems] = useState(inventory)
 
     //estado derivado
@@ -78,6 +78,26 @@ export const InventoryPage = () => {
         const searchText = inputValue.toLowerCase()
         return inventoryItem.includes(searchText)
     })
+
+
+    //funcion para marcar como completado recibe un parametro id
+    const itemChecked = (id ) => {
+        //creamos una copia del [estado]
+        const newInventoryItems = [...inventoryItems] 
+        //buscamos el indice del item que queremos marcar como completado
+        const itemIndex = newInventoryItems.findIndex((item) => item.id === id) 
+        //cambiamos el estado del item
+        newInventoryItems[itemIndex].completed = !newInventoryItems[itemIndex].completed 
+        //actualizamos el estado
+        setInventoryItems(newInventoryItems)
+    }
+
+    const deleteItem = (id) => {
+        const newInventoryItems = [...inventoryItems]
+        const itemIndex = newInventoryItems.findIndex((item) => item.id === id)
+        newInventoryItems.splice(itemIndex, 1)
+        setInventoryItems(newInventoryItems)
+    }
 
 
     return (
@@ -97,12 +117,15 @@ export const InventoryPage = () => {
                 
                 <InventoryList>
                 {searchedItems.map((item) => (
+
                     <InventoryItem
                         key={item.id}
                         name={item.name}
                         role={item.role}
                         imageUrl={item.imageUrl}
                         completed={item.completed}
+                        onCompleted={() => itemChecked(item.id)}
+                        onDeleted={() => deleteItem(item.id)}
                     />
                 ))}
 
